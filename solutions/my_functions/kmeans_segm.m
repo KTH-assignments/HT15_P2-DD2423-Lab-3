@@ -20,7 +20,6 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
 
   %centers = [255 255 255; 248 136 2];
   centers = [];
-  centers = im2double(centers);
 
   rng(seed);
   rand_colours = rand(K, 3);
@@ -31,7 +30,7 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
 
 
   % This maps every pixel to the kernel closest to it
-  kernel_with_min_distance = zeros(height * width, 1);
+  segmentation = zeros(height * width, 1);
 
   % A pixels x centers matrix.
   pixel_to_kernel_distance = zeros(height * width, K);
@@ -42,7 +41,7 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
     % Assign each pixel to the cluster center for which the distance is minimum
     pixel_to_kernel_distance  = pdist2(lab_2D, centers, 'euclidean');
 
-    [min_distance kernel_with_min_distance] = min(pixel_to_kernel_distance, [], 2);
+    [min_distance segmentation] = min(pixel_to_kernel_distance, [], 2);
 
     % --------------------------------------------------------------------------
     % Recompute each cluster center by taking the
@@ -55,7 +54,7 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
       means = double(means);
 
       for pixel = 1:height * width
-        if kernel_with_min_distance(pixel) == kernel
+        if segmentation(pixel) == kernel
 
           pixels = pixels + 1;
 
@@ -72,16 +71,16 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
   end % End l loop
 
 
-  segmentation = zeros(height * width, 3);
 
-  centers
+  segmented_image = zeros(height * width, 3);
 
-  segmentation(:,1) = centers(kernel_with_min_distance(:,1), 1);
-  segmentation(:,2) = centers(kernel_with_min_distance(:,1), 2);
-  segmentation(:,3) = centers(kernel_with_min_distance(:,1), 3);
+  segmented_image(:,1) = centers(segmentation(:,1), 1);
+  segmented_image(:,2) = centers(segmentation(:,1), 2);
+  segmented_image(:,3) = centers(segmentation(:,1), 3);
 
-  segmentation = reshape(segmentation, height, width, 3);
+  segmented_image = reshape(segmented_image, height, width, 3);
+  segmentation = reshape(segmentation, height, width, 1);
 
-  imshow(segmentation);
+  imshow(segmented_image);
 
 end % End function

@@ -21,36 +21,46 @@ having been taken regarding the diversity of initial colours.
 Figures \ref{fig:orange}, \ref{fig:orange_segmented}
 and \ref{fig:orange_segmented_bounds} illustrate the k-means segmentation
 method for image \texttt{orange} with
-\texttt{(K,L,scale\_factor, $\sigma$) $\equiv$ (8,10, 1, 1)}.
+$$\texttt{(K,L,scale\_factor, $\sigma$) $\equiv$ (8,10, 1, 1)}$$
 
 
 \begin{figure}[H]
 	\centering
   \includegraphics[scale=0.4]{../../bildat_lab3/orange.jpg}
-  \caption{The original image.}
+  \caption{Image \texttt{orange}.}
   \label{fig:orange}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-  \includegraphics[scale=0.4]{./images/01/default1.png}
-  \caption{The image segmented.}
-	\label{fig:orange_segmented}
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-  \includegraphics[scale=0.4]{./images/01/default2.png}
-  \caption{The image and the bounds of its segments.}
-  \label{fig:orange_segmented_bounds}
-\end{figure}
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[scale=0.4]{./images/01/default1.png}
+      \caption{Image \texttt{orange} segmented.}
+      \label{fig:orange_segmented}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[scale=0.4]{./images/01/default2.png}
+      \caption{Image \texttt{orange} and the bounds of its segments.}
+      \label{fig:orange_segmented_bounds}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
 
 
 % ------------------------------------------------------------------------------
 % --------------------------------- Question 2 ---------------------------------
 % ------------------------------------------------------------------------------
 \subsection{Question 2}
-Convergence time depends linearly on the number of clusters $K$ chosen.
+Convergence time depends linearly on the number of clusters $K$ chosen and the
+size of the image.
 Furthermore it depends on the colour diversity of the image.
 Tables \ref{tab:convergence_orange} and \ref{tab:convergence_tiger} illustrate
 the number of iterations it takes for the k-means clustering method to
@@ -76,7 +86,8 @@ reach convergence depending on the number of clusters.
     12                & 31                    \\
     \end{tabular}
     \caption{Number of centers $K$ and number of iterations taken to reach
-      convergence with regard to image \texttt{orange}.}
+      convergence with regard to image \texttt{orange}.
+      \texttt{(scale\_factor, $\sigma$) $\equiv$ (1, 1)}}
     \label{tab:convergence_orange}
   \end{minipage}
   \hfill
@@ -97,7 +108,8 @@ reach convergence depending on the number of clusters.
       12                & 132                   \\
     \end{tabular}
     \caption{Number of centers $K$ and number of iterations taken to reach
-      convergence with regard to image \texttt{tiger1}.}
+      convergence with regard to image \texttt{tiger1}.
+      \texttt{(scale\_factor, $\sigma$) $\equiv$ (1, 1)}}
     \label{tab:convergence_tiger}
   \end{minipage}
 }}
@@ -109,7 +121,63 @@ reach convergence depending on the number of clusters.
 % ------------------------------------------------------------------------------
 \subsection{Question 3}
 
+If I understand the question correctly, this value is $K=13$.
+Figures \ref{fig:Q3:kmeans1_12} and \ref{fig:Q3:kmeans2_12} illustrate that
+a superpixel covers parts from both halves of the orange for $K=12$,
+whereas in figures \ref{fig:Q3:kmeans1_13} and \ref{fig:Q3:kmeans2_13},
+where $K=13$, there is a clear boundary between them.
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.36]{./images/01/kmeans1_12.png}
+      \caption{Image \texttt{orange} segmented using $K = 12$ clusters.}
+      \label{fig:Q3:kmeans1_12}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.36]{./images/01/kmeans2_12.png}
+      \caption{Image \texttt{orange} and the bounds of its segments for $K=12$.}
+      \label{fig:Q3:kmeans2_12}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.36]{./images/01/kmeans1_13.png}
+      \caption{Image \texttt{orange} segmented using $K = 13$ clusters.}
+      \label{fig:Q3:kmeans1_13}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.36]{./images/01/kmeans2_13.png}
+      \caption{Image \texttt{orange} and the bounds of its segments for $K=13$.}
+      \label{fig:Q3:kmeans2_13}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
 % ------------------------------------------------------------------------------
 % --------------------------------- Question 4 ---------------------------------
 % ------------------------------------------------------------------------------
 \subsection{Question 4}
+
+Initially, what should be done is to increase the number of clusters $K$ since
+image \texttt{tiger1} is more diverse in colours than image \texttt{orange}.
+As convergence takes more iterations to be met for increasing number of clusters,
+so should the iteration upper threshold $L$.
+
+In the case where the clusters are not initialized in random but with a
+certain colour set that is desired to be achieved, then the centers of these
+clusters should be set to the values of those clusters.

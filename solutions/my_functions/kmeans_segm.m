@@ -70,8 +70,6 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
 
   end % End l loop
 
-  sprintf('(K,l) = (%d, %d)', K, l_broken)
-
   segmented_image = zeros(height * width, 3);
 
   segmented_image(:,1) = centers(segmentation(:,1), 1);

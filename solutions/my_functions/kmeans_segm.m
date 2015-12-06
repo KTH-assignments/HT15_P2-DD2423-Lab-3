@@ -35,8 +35,8 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
   % A pixels x centers matrix.
   pixel_to_kernel_distance = zeros(height * width, K);
 
-
   for l = 1:L
+
     % --------------------------------------------------------------------------
     % Assign each pixel to the cluster center for which the distance is minimum
     pixel_to_kernel_distance  = pdist2(lab_2D, centers, 'euclidean');
@@ -70,7 +70,7 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
 
   end % End l loop
 
-
+  sprintf('(K,l) = (%d, %d)', K, l_broken)
 
   segmented_image = zeros(height * width, 3);
 

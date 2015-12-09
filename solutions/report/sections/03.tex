@@ -416,7 +416,7 @@ images \texttt{orange}, \texttt{tiger\{1,2,3\}}.
 
 % --------------------------------- Question 8 ---------------------------------
 \subsection{Question 8}
-The two parameters that were able to reduce the number of cuts while at the
+The two parameters that were able to reduce the number of segments while at the
 same time keeping a reasonable segmentation accuracy were both the
 \texttt{ncuts\_thresh} and \texttt{max\_depth} parameters as it can be seen
 in figures \ref{fig:03_Q7_tiger1_nt_001} - \ref{fig:03_Q7_tiger3_md_16}.
@@ -426,5 +426,66 @@ when increased, although not in the same capacity as the former two parameters.
 
 % --------------------------------- Question 9 ---------------------------------
 \subsection{Question 9}
+
+Since
+
+\begin{equation}
+  Ncut(A,B) = cut(A,B) \Big (\frac{1}{assoc(A,V)} + \frac{1}{assoc(B,V)} \Big)
+  \label{eq:Q9_1}
+\end{equation}
+
+if $assoc(V)$ represents the total number of edges in the graph, then
+
+\begin{equation}
+  assoc(V) = assoc(A,V) + assoc(B,V) - cut(A,B)
+  \label{eq:Q9_2}
+\end{equation}
+
+since $cut(A,B)$ is included in each $assoc(*,V)$, and equation \ref{eq:Q9_1}
+is then formed as
+
+\begin{equation}
+  Ncut(A,B) = cut(A,B) \Big (\frac{1}{assoc(A,V)} + \frac{1}{assoc(V) - cut(A,B) - assoc(A,V)} \Big)
+  \label{eq:Q9_3}
+\end{equation}
+
+In equation \ref{eq:Q9_3}, we consider all variables except $assoc(A,V)$ to be
+constants. Then, minimizing equation \ref{eq:Q9_3} means finding the value of
+$assoc(A,V)$ that satisfies equation \ref{eq:Q9_4}:
+
+\begin{equation}
+  \frac{d}{dassoc(A,V)}Ncut(A,B) = 0
+  \label{eq:Q9_4}
+\end{equation}
+
+The derivative of $Ncut(A,B)$ with respect to $assoc(A,V)$,
+$\frac{d}{dassoc(A,V)}Ncut(A,B)$ is
+
+
+\begin{multline}
+  \frac{d}{dassoc(A,V)}Ncut(A,B) = -\frac{cut(A,B)}{assoc(A,V)^2} +
+  \frac{cut(A,B)}{(assoc(V) + cut(A,B) - assoc(A,V))^2} = \\
+  \frac{cut(A,B)(assoc(A,V)^2 - (assoc(A,V) - assoc(V) - cut(A,B))^2)}{(assoc(A,V)(assoc(A,V) - assoc(V) - cut(A,B))^2)} = \\
+  \frac{cut(A,B)(-2assoc(A,V)(assoc(V) + cut(A,B)) + (assoc(V) + cut(A,B))^2)}{(assoc(A,V)(assoc(A,V) - assoc(V) - cut(A,B))^2)} = \\
+  \frac{cut(A,B)(assoc(V) + cut(A,B))(-2assoc(A,V) + (assoc(V) + cut(A,B)))}{(assoc(A,V)(assoc(A,V) - assoc(V) - cut(A,B))^2)}
+\end{multline}
+
+Hence, if equation \ref{eq:Q9_4} is to be satisfied
+
+\begin{equation}
+  assoc(A,V) = \frac{assoc(V) + cut(A,B)}{2}
+\end{equation}
+
+and from equation \ref{eq:Q9_2}
+
+\begin{equation}
+  assoc(B,V) = \frac{assoc(V) + cut(A,B)}{2} = assoc(A,V)
+\end{equation}
+
+Hence, the Normalized Cuts method, in theory at least, tries to minimize the
+cut by finding equally sized cuts. However, in practice this was not witnessed
+in general, as the problem of finding the optimal cut is a NP-complete problem
+and the methods that try to solve it and are at our disposal are approximative.
+
 % --------------------------------- Question 10 ---------------------------------
 \subsection{Question 10}

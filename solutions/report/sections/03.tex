@@ -225,6 +225,7 @@ images \texttt{orange}, \texttt{tiger\{1,2,3\}}.
 
 
 \subsubsection{Best results - image \texttt{orange}}
+\label{subsub:best_orange}
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
@@ -272,6 +273,7 @@ images \texttt{orange}, \texttt{tiger\{1,2,3\}}.
 
 
 \subsubsection{Image \texttt{tiger1}}
+\label{subsub:best_tiger1}
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
@@ -319,6 +321,7 @@ images \texttt{orange}, \texttt{tiger\{1,2,3\}}.
 
 
 \subsubsection{Image \texttt{tiger2}}
+\label{subsub:best_tiger2}
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
@@ -367,6 +370,7 @@ images \texttt{orange}, \texttt{tiger\{1,2,3\}}.
 
 
 \subsubsection{Image \texttt{tiger3}}
+\label{subsub:best_tiger3}
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\linewidth}
@@ -489,3 +493,391 @@ and the methods that try to solve it and are at our disposal are approximative.
 
 % --------------------------------- Question 10 ---------------------------------
 \subsection{Question 10}
+
+Figures \ref{fig:03_Q10_orange_1_10.02.10} - \ref{fig:06_Q10_tiger3_2_100.01.8}
+compare the figures of sections \ref{subsub:best_orange},
+\ref{subsub:best_tiger1}, \ref{subsub:best_tiger2} and \ref{subsub:best_tiger3}
+which were generated with \texttt{radius = 3} with their respective counterparts
+of \texttt{radius = 6}.
+
+What is apparent from this comparison is that the higher the value of
+\texttt{radius}, that is, the larger the considered neighbourhood of a pixel,
+the lower the number of segments becomes.
+However, that does not mean that the segmentation becomes coarser; the case
+is quite the opposite. While a smaller radius produces an overfragmentation even
+for areas whose internal structure is reasonably homogeneous, a larger radius
+can split regions in finer detail along the edges of colour-wise heterogeneous
+regions and treat reasonably homogeneous regions in a more relaxed way, assigning
+them a single colour, instead of multiple hues of the same colour. This is quite
+evident in the segmentation of the centers of the two orange halves, the bush and
+wall over the tiger in image \texttt{tiger1}, the region of the white fur of the
+tiger in the same image, the distinction of the eyes of the tiger in image
+\texttt{tiger2} and the foreground and background of image \texttt{tiger3}.
+
+
+\subsubsection{Image \texttt{orange}}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/orange/best/normcuts1_ma_10_nt_0.2_md_10.png}
+      \caption{Image \texttt{orange} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 10). radius = 3}}
+      \label{fig:03_Q10_orange_1_10.02.10}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/orange/10.02.10/r6/normcuts1_ma_10_nt_0.2_md_10.png}
+      \caption{Image \texttt{orange} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 10). radius = 6}}
+      \label{fig:06_Q10_orange_1_10.02.10}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/orange/best/normcuts2_ma_10_nt_0.2_md_10.png}
+      \caption{Image \texttt{orange} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 10). radius = 3}}
+      \label{fig:03_Q10_orange_2_10.02.10}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/orange/10.02.10/r6/normcuts2_ma_10_nt_0.2_md_10.png}
+      \caption{Image \texttt{orange} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 10). radius = 6}}
+      \label{fig:06_Q10_orange_2_10.02.10}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/orange/best/normcuts1_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{orange} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 3}}
+      \label{fig:03_Q10_orange_1_10.05.16}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/orange/10.05.16/r6/normcuts1_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{orange} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 6}}
+      \label{fig:06_Q10_orange_1_10.05.16}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/orange/best/normcuts2_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{orange} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 3}}
+      \label{fig:03_Q10_orange_2_10.05.16}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/orange/10.05.16/r6/normcuts2_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{orange} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 6}}
+      \label{fig:06_Q10_orange_2_10.05.16}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\subsubsection{Image \texttt{tiger1}}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger1/best/normcuts1_ma_10_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger1} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.1, 8). radius = 3}}
+      \label{fig:03_Q10_tiger1_1_10.01.8}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger1/10.01.8/r6/normcuts1_ma_10_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger1} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.1, 8). radius = 6}}
+      \label{fig:06_Q10_tiger1_1_10.01.8}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger1/best/normcuts2_ma_10_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger1} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.1, 8). radius = 3}}
+      \label{fig:03_Q10_tiger1_2_10.01.8}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger1/10.01.8/r6/normcuts2_ma_10_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger1} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.1, 8). radius = 6}}
+      \label{fig:06_Q10_tiger1_2_10.01.8}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger1/best/normcuts1_ma_10_nt_0.2_md_16.png}
+      \caption{Image \texttt{tiger1} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 16). radius = 3}}
+      \label{fig:03_Q10_tiger1_1_10.02.16}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger1/10.02.16/r6/normcuts1_ma_10_nt_0.2_md_16.png}
+      \caption{Image \texttt{tiger1} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 16). radius = 6}}
+      \label{fig:06_Q10_tiger1_1_10.02.16}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger1/best/normcuts2_ma_10_nt_0.2_md_16.png}
+      \caption{Image \texttt{tiger1} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 16). radius = 3}}
+      \label{fig:03_Q10_tiger1_2_10.02.16}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger1/10.02.16/r6/normcuts2_ma_10_nt_0.2_md_16.png}
+      \caption{Image \texttt{tiger1} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.2, 16). radius = 6}}
+      \label{fig:06_Q10_tiger1_2_10.02.16}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\subsubsection{Image \texttt{tiger2}}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger2/best/normcuts1_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger2} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 3}}
+      \label{fig:03_Q10_tiger2_1_10.05.10}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger2/10.05.10/r6/normcuts1_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger2} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 6}}
+      \label{fig:06_Q10_tiger2_1_10.05.10}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger2/best/normcuts2_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger2} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 3}}
+      \label{fig:03_Q10_tiger2_2_10.05.10}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger2/10.05.10/r6/normcuts2_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger2} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 6}}
+      \label{fig:06_Q10_tiger2_2_10.05.10}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger2/best/normcuts1_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{tiger2} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 3}}
+      \label{fig:03_Q10_tiger2_1_10.05.16}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger2/10.05.16/r6/normcuts1_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{tiger2} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 6}}
+      \label{fig:06_Q10_tiger2_1_10.05.16}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger2/best/normcuts2_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{tiger2} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 3}}
+      \label{fig:03_Q10_tiger2_2_10.05.16}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger2/10.05.16/r6/normcuts2_ma_10_nt_0.5_md_16.png}
+      \caption{Image \texttt{tiger2} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 16). radius = 6}}
+      \label{fig:06_Q10_tiger2_2_10.05.16}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\subsubsection{Image \texttt{tiger3}}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger3/best/normcuts1_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger3} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 3}}
+      \label{fig:03_Q10_tiger3_1_10.05.10}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger3/10.05.10/r6/normcuts1_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger3} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 6}}
+      \label{fig:06_Q10_tiger3_1_10.05.10}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger3/best/normcuts2_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger3} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 3}}
+      \label{fig:03_Q10_tiger3_2_10.05.10}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger3/10.05.10/r6/normcuts2_ma_10_nt_0.5_md_10.png}
+      \caption{Image \texttt{tiger3} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (10, 0.5, 10). radius = 6}}
+      \label{fig:06_Q10_tiger3_2_10.05.10}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger3/best/normcuts1_ma_100_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger3} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (100, 0.1, 8). radius = 3}}
+      \label{fig:03_Q10_tiger3_1_100.01.8}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger3/100.01.8/r6/normcuts1_ma_100_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger3} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (100, 0.1, 8). radius = 6}}
+      \label{fig:06_Q10_tiger3_1_100.01.8}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/tiger3/best/normcuts2_ma_100_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger3} segmented with
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (100, 0.1, 8). radius = 3}}
+      \label{fig:03_Q10_tiger3_2_100.01.8}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+      \includegraphics[scale=0.8]{./images/03/Q10/tiger3/100.01.8/r6/normcuts2_ma_100_nt_0.1_md_8.png}
+      \caption{Image \texttt{tiger3} and the bounds of its segments.
+        \texttt{(min\_area, ncut\_thresh, max\_depth) $\equiv$ (100, 0.1, 8). radius = 6}}
+      \label{fig:06_Q10_tiger3_2_100.01.8}
+    \end{figure}
+  \end{minipage}
+\end{minipage}
+}

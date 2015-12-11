@@ -34,4 +34,3 @@ for l=1:3
 end
 
 segm = int16(u>0.5) + 1;
-

@@ -1,3 +1,9 @@
+%scale_factor = 0.5;          % image downscale factor
+%area = [ 80, 110, 570, 300 ] % image region to train foreground with
+%K = 16;                      % number of mixture components
+%alpha = 8.0;                 % maximum edge cost
+%sigma = 10.0;                % edge cost decay factor
+
 scale_factor = 0.5;          % image downscale factor
 area = [ 80, 110, 570, 300 ] % image region to train foreground with
 K = 16;                      % number of mixture components

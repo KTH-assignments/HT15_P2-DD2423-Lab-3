@@ -79,6 +79,6 @@ function [ segmentation, centers ] = kmeans_segm(image, K, L, seed)
   segmented_image = reshape(segmented_image, height, width, 3);
   segmentation = reshape(segmentation, height, width, 1);
 
-  imshow(segmented_image);
+  %figure, imshow(image), figure, imshow(segmented_image), pause, close all;
 
 end % End function

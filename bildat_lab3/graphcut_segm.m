@@ -18,7 +18,7 @@ grad = sqrt(dx.^2 + dy.^2);
 edge = (alpha*sigma)*ones(size(grey)) ./ (grad + sigma);
 
 tic
-for l=1:3
+for l=1:4
 
     fprintf('Find Gaussian mixture models...\n');
     fprob = mixture_prob(I, K, 10, mask);

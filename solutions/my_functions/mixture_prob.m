@@ -27,7 +27,7 @@ function prob = mixture_prob(image, K, L, mask)
 
   % sigma_k
   cov = cell(K,1);
-  cov(:) = {100000 * (1 +rand) * eye(3) + ones(3,3)};
+  cov(:) = {100000 * (1 + rand) * eye(3) +  ones(3,3)};
 
   % w_k
   w = zeros(K, 1);
@@ -89,10 +89,11 @@ function prob = mixture_prob(image, K, L, mask)
       diff = bsxfun(@minus, image_masked_vec, centers(kernel, :));
 
       d = diff' * (diff .* repmat(p(:,kernel), [1 3]));
-
       diag_d = diag(diag(d));
 
-      cov{kernel} =  (rand + diag_d) / sum(p(:, kernel), 1);
+      n = sum(p(:,kernel)' * (diff .* diff), 2);
+
+      cov{kernel} =  (n * eye(3) + diag_d + rand) / sum(p(:, kernel), 1);
 
     end
 

@@ -6,7 +6,7 @@ function prob = mixture_prob(image, K, L, mask)
   N = height * width;
 
   % Reshape image into 2D
-  image_vec = im2double(reshape(image, width * height, 3));
+  image_vec = single(reshape(image, width * height, 3));
 
 % -------------- Store all pixels for which mask=1 in a Nx3 matrix -------------
 
@@ -27,7 +27,7 @@ function prob = mixture_prob(image, K, L, mask)
 
   % sigma_k
   cov = cell(K,1);
-  cov(:) = {100000 * (1 +rand) * eye(3) + ones(3,3)};
+  cov(:) = {rand * 10000 * eye(3) + ones(3,3)};
 
   % w_k
   w = zeros(K, 1);
@@ -55,7 +55,10 @@ function prob = mixture_prob(image, K, L, mask)
 % --------- Expectation: Compute probabilities P_ik using masked pixels --------
     for kernel = 1:K
 
-      g(:,kernel) = g_k(image_masked_vec, centers(kernel,:), cov{kernel});
+      diff = abs(bsxfun(@minus, image_masked_vec, centers(kernel, :)));
+
+      g(:,kernel) = ((2 * pi)^3 * abs(det(cov{kernel})))^(-1/2) * ...
+        exp(-0.5 * sum(diff * inv(cov{kernel}) .* diff, 2));
 
       % g should sum up to one
       g(:,kernel) = g(:,kernel) / sum(g(:,kernel), 1);
@@ -91,22 +94,16 @@ function prob = mixture_prob(image, K, L, mask)
       d = diff' * (diff .* repmat(p(:,kernel), [1 3]));
 
       diag_d = diag(diag(d));
-
-      cov{kernel} =  (rand + diag_d) / sum(p(:, kernel), 1);
+      cov{kernel} =  (diag_d) / sum(p(:, kernel), 1);
 
     end
 
   end
 
-  pos_NK = zeros(N,K);
+  k = (g * w);
+  k = k / sum(k,1);
 
-  for kernel = 1:K
-    pos_NK(:,kernel) = g_k((image_vec), centers(kernel,:), cov{kernel}) * w(kernel);
-    pos_NK(:,kernel) = pos_NK(:,kernel) / sum(pos_NK(:,kernel), 1);
-  end
 
-  pos = sum(pos_NK,2);
-
-  prob = reshape(pos, height, width, 1);
+  prob = reshape(k, height, width, 1);
 
 end

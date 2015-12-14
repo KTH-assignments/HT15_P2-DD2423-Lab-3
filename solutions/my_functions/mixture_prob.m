@@ -80,11 +80,9 @@ function prob = mixture_prob(image, K, L, mask)
 
       diff = bsxfun(@minus, image_masked_vec, centers(kernel, :));
 
-      d = diff' * (diff .* repmat(p(:,kernel), [1 3]));
+      nom_cov = diff' * (diff .* repmat(p(:,kernel), [1 3]));
 
-      diag_d = diag(diag(d));
-
-      cov{kernel} =  (d / sum(p(:, kernel), 1)) * eye(3) + 0.0001 * diag(diag(rand(3)));
+      cov{kernel} =  nom_cov / sum(p(:, kernel), 1) + 0.0005 * diag(diag(rand(3)));
     end
 
   end

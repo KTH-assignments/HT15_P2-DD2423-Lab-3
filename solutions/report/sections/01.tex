@@ -5,7 +5,7 @@
 
 The result of the initialization of the clustering process depends on whether
 there is a priori knowledge about the image to be segmented. In this example,
-where image ``orange" is known, we can specify the colour of each initial
+where image \texttt{orange} is known, we can specify the colour of each initial
 cluster depending on what the image's dominant colours are. In this case where
 the colour diversity is low, it is possible to set two initial kernel values
 to the colours ``orange" (roughly $(255,150,0)$ in the image in question)
@@ -61,10 +61,12 @@ $$\texttt{(K,L,scale\_factor, $\sigma$) $\equiv$ (8,10, 1, 1)}$$
 \subsection{Question 2}
 Convergence time depends linearly on the number of clusters $K$ chosen and the
 size of the image.
-Furthermore it depends on the colour diversity of the image.
+Furthermore it depends on the colour diversity of the image and is inversely
+proportional to the amount of pre-blurring.
 Tables \ref{tab:convergence_orange} and \ref{tab:convergence_tiger} illustrate
-the number of iterations it takes for the k-means clustering method to
-reach convergence depending on the number of clusters.
+the number of iterations it takes for the \texttt{K-means} clustering method to
+reach convergence for images \texttt{orange} and \texttt{tiger1}
+for different number of clusters.
 
 \begin{table}[H]
 \centering
@@ -121,9 +123,9 @@ reach convergence depending on the number of clusters.
 % ------------------------------------------------------------------------------
 \subsection{Question 3}
 
-If I understand the question correctly, this value is $K=13$.
-Figures \ref{fig:Q3:kmeans1_12} and \ref{fig:Q3:kmeans2_12} illustrate that
-a superpixel covers parts from both halves of the orange for $K=12$,
+If I understand the question correctly, this value is $K=13$ for image
+\texttt{orange}.  Figures \ref{fig:Q3:kmeans1_12} and \ref{fig:Q3:kmeans2_12}
+illustrate that a superpixel covers parts from both halves of the orange for $K=12$,
 whereas in figures \ref{fig:Q3:kmeans1_13} and \ref{fig:Q3:kmeans2_13},
 where $K=13$, there is a clear boundary between them.
 
@@ -174,9 +176,9 @@ where $K=13$, there is a clear boundary between them.
 \subsection{Question 4}
 
 Initially, what should be done is to increase the number of clusters $K$ since
-image \texttt{tiger1} is more diverse in colour than image \texttt{orange}.
+images \texttt{tiger\{1,2,3\}} is more diverse in colour than image \texttt{orange}.
 As convergence takes more iterations to be met for increasing number of clusters,
-so should the iteration upper threshold $L$.
+the iteration upper threshold $L$ should be increased as well.
 
 In the case where the clusters are not initialized in random but with a
 certain colour set that is desired to be achieved, then the centers of these

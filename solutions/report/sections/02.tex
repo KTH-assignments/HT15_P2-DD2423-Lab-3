@@ -1502,7 +1502,16 @@ As seen in the above figures, the value of the spatial bandwidth is proportional
 to the area of the regions of interest, that is, the resulting segments. As
 the area of the segments becomes larger, their number becomes smaller, and thus
 so does the number of modes. Hence, there is a coarser approximation both
-spatial-wise and colour-wise.
+spatial-wise and colour-wise. Another way to look at this is that the
+bandwidth \texttt{$\sigma_s^2$} controls the width of the density function
+around each image point. The smaller it is, the clearer the peaks of the
+density function in \texttt{5D} space are, hence the more distinct the gradient
+ascent is, the more representative of the actual coherence the modes are,
+and the better the assignment accuracy.
+However, as the spatial bandwidth increases, the width of the gaussians increases,
+and gaussians become more spread-out into space, while blending
+together for neighbouring pixels, and, hence, making it more easy for pixels
+to be assigned to a more spread-out mode.
 
 Figures \ref{fig:02_orange1_8_1} - \ref{fig:02_orange2_8_2},
 \ref{fig:02_tiger1_1_8_1} - \ref{fig:02_tiger1_2_8_2},

@@ -884,7 +884,7 @@ resulting segmentation of image \texttt{tiger1} for values of
 \texttt{K $\in$ [1, 16], K $\in \mathbb{Z}$}.
 
 As is evident from these images, the minimum value for \texttt{K} that can still
-produce reasonably accurate segmentation resaults for image \texttt{tiger1} is
+produce reasonably accurate segmentation results for image \texttt{tiger1} is
 \texttt{K=6}.
 
 
@@ -1070,7 +1070,8 @@ but more accurate (in terms of colour similarity) segmentation.
 Starting from the outside in, all considered segmentation methods try to find
 similarities in colour and group pixels deemed similar into one segment.
 That said, however, from the 4 considered segmentation methods only
-\texttt{K-means} has no spatial awareness. Although \texttt{mean-shift} does
+\texttt{K-means} has no spatial awareness, and thus its output segments typically
+span across split-up areas. Although \texttt{mean-shift} does
 take spatial provisions, its modus operandi is closer to \texttt{K-means} than
 \texttt{Normalized Cut} or \texttt{Graph cut} who treat an image as a graph
 and build their approach from there. Their main difference, and indeed the main
